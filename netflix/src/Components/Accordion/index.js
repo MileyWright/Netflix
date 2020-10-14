@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { Container, Row, Column, Link, Title, Text, Break } from './styles/Footer';
+import { Container, Frame, Item, Inner, Title, Body } from './styles/accordion';
 
 const ToggleContext = createContext();
 
 function Accordion({ children, direction = 'row', ...restProps }) {
     return  ( 
         <Container {...restProps}>
-            <Inner> {children }</Inner>
+            <Inner> { children }</Inner>
         </Container>
 )}
 
@@ -23,9 +23,25 @@ Accordion.Frame = function AccordionFrame({ children, ...restProps }) {
 Accordion.Item = function AccordionItem({ children, ...restProps }) {
     const [toggleShow, setToggleShow] = useState(false);
 
-    return <Item {...restProps}>{children}</Item>;
+    return (
+        <ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
+            <Item {...restProps}> {children} </Item>
+        </ToggleContext.Provider>
+    );
 };
 
 Accordion.Header = function AccordionHeader({ children, ...restProps }) {
-    return <Header onClick={() => setToggle()}>{children}</Header>;
+    const { toggleShow, setToggleShow } = useContext(ToggleContext);
+
+    return ( 
+        <Header onClick={() => setToggleShow(toggleShow => !toggleShow)} {...restProps}>
+            {children}
+        </Header>
+    );
 };
+
+Accordion.Body = function AccordionBody({ children, ...restProps }) {
+    const { toggleShow } = useContext(ToggleContext);
+
+    return toggleShow ? <Body { ...restProps }> {children} </Body> : null;
+}
