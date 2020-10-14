@@ -4,7 +4,7 @@ import { Container, Inner } from './Styles/Jumbotron';
 function Jumbotron ({ children, direction = 'row', ...restProps }) {
     return (
         <Inner direction={direction}>
-            <p> Hello </p>
+            {children}
             </Inner>
         
     )
