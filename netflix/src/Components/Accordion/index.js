@@ -3,7 +3,7 @@ import { Container, Frame, Header, Item, Inner, Title, Body } from './styles/acc
 
 const ToggleContext = createContext();
 
-function Accordion({ children, direction = 'row', ...restProps }) {
+function Accordion({ children, ...restProps }) {
     return  ( 
         <Container {...restProps}>
             <Inner> { children }</Inner>
