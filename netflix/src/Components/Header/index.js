@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Container, Background, Frame, Logo } from './styles/Header';
+import { Container, Background, Frame, Logo, Button } from './styles/Header';
 
 export default function Header({ bg = true, children, ...restProps}) {
     return bg ? (
@@ -24,3 +24,6 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 
     )
 }
+Header.Button = function HeaderButton({ children, ...restProps }) {
+    return <Button {...restProps}>{children}</Button>;
+  };
