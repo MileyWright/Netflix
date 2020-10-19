@@ -20,6 +20,13 @@ export const Input = styled.input`
   padding: 10px;
   height: 70px;
   box-sizing: border-box;
+  border-radius: 2px;
+  @media (max-width: 1000px) {
+    height: 60px;
+  }
+  @media (max-width: 800px) {
+    height: 50px;
+  }
 `;
 
 export const Break = styled.div`
