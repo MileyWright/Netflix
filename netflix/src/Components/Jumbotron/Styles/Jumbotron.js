@@ -17,7 +17,7 @@ width: 100%;
 
 export const Item = styled.div`
     display: flex;
-    border-bottom: 8px solid #222;
+    border-top: 8px solid #222;
     padding: 50px 5%;
     color: white;
     overflow: hidden;
