@@ -20,7 +20,25 @@ export default function Signup() {
     const handleSignup = e => {
         e.preventDefault();
 
-        //do firebase stuff
+        return firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(res => 
+                res.user
+                    .updateProfile({
+                        displayName: firstName,
+                        photoURL: Math.floor(Math.random() * 5) + 1,
+                    })
+                    .then(() => {
+                        history.push(Routes.BROWSE);
+                    })
+            )
+            .catch(err => {
+                setFirstName('');
+                setEmail('');
+                setPassword('');
+                setError(err.message);
+            })
     }
 
     return (
