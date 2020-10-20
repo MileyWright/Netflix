@@ -4,12 +4,12 @@ import { FooterContainer } from '../Containers/Footer';
 import { Form } from '../Components';
 
 export default function Signin() {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     
     const isInvalid = password === '' || email === '';
-    
+
     const handleSignin = e => {
         e.preventDefault()
     }
