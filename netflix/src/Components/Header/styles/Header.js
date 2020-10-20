@@ -11,7 +11,6 @@ export const Background = styled.div`
     ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
 }`;
 
-export const Frame = styled.div``;
 
 export const Container = styled.div`
     display: flex;
