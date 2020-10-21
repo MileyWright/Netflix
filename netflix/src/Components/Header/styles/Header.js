@@ -46,7 +46,7 @@ export const Group = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  background-color: #44444459;
+  background-color: rgba(64, 64, 64, 0.5);
   color: white;
   border: 1px solid white;
   transition: width 0.5s;
@@ -56,6 +56,10 @@ export const SearchInput = styled.input`
   padding: ${({ active }) => (active === true ? '0 10px' : '0')};
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '200px' : '0px')};
+
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 export const Search = styled.div`
@@ -74,6 +78,13 @@ export const SearchIcon = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: 0;
+  outline: 0;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   img {
     filter: brightness(0) invert(1);
     width: 16px;
@@ -126,7 +137,10 @@ export const Dropdown = styled.div`
       margin-bottom: 0;
     }
 
-    ${NavLink}, ${Picture} {
+    ${NavLink} {
+      cursor: pointer;
+    }
+    ${Picture} {
       cursor: default;
     }
   }
@@ -183,8 +197,8 @@ export const Text = styled.p`
 `;
 
 export const Logo = styled.img`
-  height: 32px;
-  width: 108px;
+  height: 36px;
+  width: 134px;
   margin-right: 40px;
   @media (min-width: 1449px) {
     height: 45px;
