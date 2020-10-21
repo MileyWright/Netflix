@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Container, Background, Logo, Button, Feature, Group, Text } from './styles/Header';
+import { Container, Background, Logo, Button, Feature, Group, Text, FeatureCallOut, NavLink } from './styles/Header';
 
 export default function Header({ bg = true, children, ...restProps}) {
     return bg ? (
@@ -34,8 +34,16 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 }
 Header.Button = function HeaderButton({ children, ...restProps }) {
     return <Button {...restProps}>{children}</Button>;
-  };
+};
 
 Header.Text = function HeaderText({ children, ...restProps }) {
     return <Text {...restProps}>{children}</Text>;
+};
+
+Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
+    return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
+};
+
+Header.TextLink = function HeaderTextLink({ children, ...restProps }) {
+    return <NavLink {...restProps}>{children}</NavLink>;
 };

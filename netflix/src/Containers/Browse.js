@@ -2,9 +2,14 @@ import React, { useState, useContext, useEffect } from 'react';
 import { SelectProfileContainer } from './Profiles';
 import { FirebaseContext } from '../Context/firebase';
 import { Loading, Header } from '../Components';
+import * as Routes from '../Constants/routes';
+import logo from '../logo.svg';
+
 export function BrowseContainer({ slides }) {
     const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState(true);
+    const [category, setCategory] = useState('series');
+    const [searchTerm, setSearchTerm] = useState('');
 
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
@@ -23,15 +28,23 @@ export function BrowseContainer({ slides }) {
             <Header src='joker1' dontShowOnSmallViewPort>
                 <Header.Frame>
                     <Header.Group>
-
+                        <Header.Logo to={Routes.HOME} src={logo} alt="Netflix" />
+                        <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
+                            Series
+                        </Header.TextLink>
+                        <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => setCategory('films')}>
+                            Films
+                        </Header.TextLink>
                     </Header.Group>
                 </Header.Frame>
+
                 <Header.Feature>
-                <Header.Text>
-                    Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
-                    City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
-                    futile attempt to feel like he's part of the world around him.
-                </Header.Text>
+                    <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
+                    <Header.Text>
+                        Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
+                        City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
+                        futile attempt to feel like he's part of the world around him.
+                    </Header.Text>
                 </Header.Feature>
             </Header>
             </>

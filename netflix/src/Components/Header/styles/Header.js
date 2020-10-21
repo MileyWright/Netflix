@@ -76,3 +76,26 @@ export const Text = styled.p`
   line-height: normal;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
 `;
+
+export const FeatureCallOut = styled.h2`
+  color: white;
+  font-size: 50px;
+  line-height: normal;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+  margin: 0;
+`;
+
+export const NavLink = styled.p`
+  color: #fff;
+  text-decoration: none;
+  margin-right: 30px;
+  font-weight: ${({ active }) => (active === 'true' ? '700' : 'normal')};
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+`;
