@@ -1,6 +1,9 @@
 import React from 'react'
 
 export default function Browse() {
+    // we need the series and the films
+    // we need slides
+    // pass it to the browse container
     return (
         <div>
             Browse
