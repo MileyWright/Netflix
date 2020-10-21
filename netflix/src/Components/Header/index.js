@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Container, Background, Logo, Button } from './styles/Header';
+import { Container, Background, Logo, Button, Feature, Group, Text } from './styles/Header';
 
 export default function Header({ bg = true, children, ...restProps}) {
     return bg ? (
@@ -12,8 +12,16 @@ export default function Header({ bg = true, children, ...restProps}) {
     )
 }
 
+Header.Feature = function HeaderFeature({ children, ...restProps}) {
+    return <Feature {...restProps}> {children} </Feature>
+}
+
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
     return <Container {...restProps}> { children } </Container>
+};
+
+Header.Group = function HeaderGroup({ children, ...restProps }) {
+    return <Group {...restProps}>{children}</Group>;
 };
 
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
@@ -27,3 +35,7 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 Header.Button = function HeaderButton({ children, ...restProps }) {
     return <Button {...restProps}>{children}</Button>;
   };
+
+Header.Text = function HeaderText({ children, ...restProps }) {
+    return <Text {...restProps}>{children}</Text>;
+};
