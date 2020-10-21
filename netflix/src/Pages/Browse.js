@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowseContainer } from '../Containers/Browse';
 import { useContent } from '../Hooks';
 import  selectionFilter from '../Utils/SelectionFilter';
+
 export default function Browse() {
     // we need the series and the films
     const { series } = useContent('series');
