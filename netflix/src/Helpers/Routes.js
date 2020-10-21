@@ -7,13 +7,11 @@ export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
             {...rest}
             render={() => {
                 if (!user) {
-                    console.log('no user')
                     //children = signin page
                     return children;
                 }
 
                 if (user) {
-                    console.log('the user', loggedInPath)
                     return (
                         <Redirect to={{ pathname: loggedInPath }} />
                     )
