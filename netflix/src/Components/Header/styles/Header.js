@@ -115,21 +115,26 @@ export const Dropdown = styled.div`
   width: 100px;
   top: 32px;
   right: 10px;
+
   ${Group}:last-of-type ${NavLink} {
     cursor: pointer;
   }
+
   ${Group} {
     margin-bottom: 10px;
     &:last-of-type {
       margin-bottom: 0;
     }
+
     ${NavLink}, ${Picture} {
       cursor: default;
     }
   }
+
   button {
     margin-right: 10px;
   }
+  
   p {
     font-size: 12px;
     margin-bottom: 0;
