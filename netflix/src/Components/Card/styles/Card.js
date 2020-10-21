@@ -145,7 +145,7 @@ export const Item = styled.div`
     position: relative;
     cursor: pointer;
     transition: transform 0.2s;
-
+    width: 20%;
     &:hover {
     transform: scale(1.3);
     z-index: 99;
@@ -177,7 +177,7 @@ export const Item = styled.div`
 export const Image = styled.img`
     border: 0;
     width: 100%;
-    max-width: 305px;
+    max-width: 100%;
     cursor: pointer;
     height: auto;
     padding: 0;
