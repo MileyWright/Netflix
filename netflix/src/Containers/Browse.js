@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { SelectProfileContainer } from './Profiles';
 import { FirebaseContext } from '../Context/firebase';
-import { Loading, Header } from '../Components';
+import { Loading, Header, Card } from '../Components';
 import * as Routes from '../Constants/routes';
 import logo from '../logo.svg';
 
@@ -10,6 +10,7 @@ export function BrowseContainer({ slides }) {
     const [loading, setLoading] = useState(true);
     const [category, setCategory] = useState('series');
     const [searchTerm, setSearchTerm] = useState('');
+    const [slideRows, setSlideRows] = useState([]);
 
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
@@ -20,7 +21,10 @@ export function BrowseContainer({ slides }) {
         }, 3000);
       }, [profile.displayName]);
 
-      
+    useEffect(() => {
+        setSlideRows(slides[category]);
+      }, [slides, category]);
+
     return (
         profile.displayName ? (
             <>
@@ -64,6 +68,15 @@ export function BrowseContainer({ slides }) {
                     <Header.PlayButton>Play</Header.PlayButton>
                 </Header.Feature>
             </Header>
+
+            <Card.Group>
+                {slideRows.map( slideItem => (
+                    <Card key= {`${category}-${slideItem.title.toLowerCase()}`}>
+                        <Card.Title>{slideItem.title}</Card.Title>
+                    </Card>
+                ))}
+            </Card.Group>
+
             </>
 
         ) :
