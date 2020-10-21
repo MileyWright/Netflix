@@ -36,6 +36,22 @@ export function BrowseContainer({ slides }) {
                             Films
                         </Header.TextLink>
                     </Header.Group>
+
+                    <Header.Group>
+                        <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                        <Header.Profile>
+                        <Header.Picture src={user.photoURL} />
+                        <Header.Dropdown>
+                            <Header.Group>
+                            <Header.Picture src={user.photoURL} />
+                            <Header.TextLink>{user.displayName}</Header.TextLink>
+                            </Header.Group>
+                            <Header.Group>
+                            <Header.TextLink onClick={() => firebase.auth().signOut()}>Sign out</Header.TextLink>
+                            </Header.Group>
+                        </Header.Dropdown>
+                        </Header.Profile>
+                    </Header.Group>
                 </Header.Frame>
 
                 <Header.Feature>
