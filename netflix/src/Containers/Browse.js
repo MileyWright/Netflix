@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
+import Fuse from 'fuse.js';
 import { SelectProfileContainer } from './Profiles';
 import { FirebaseContext } from '../Context/firebase';
 import { Loading, Header, Card, Player } from '../Components';
+import { FooterContainer } from './Footer';
 import * as Routes from '../Constants/routes';
 import logo from '../logo.svg';
 
@@ -24,6 +26,17 @@ export function BrowseContainer({ slides }) {
     useEffect(() => {
         setSlideRows(slides[category]);
       }, [slides, category]);
+
+    useEffect(() => {
+        const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
+        const results = fuse.search(searchTerm).map(({ item }) => item);
+    
+        if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+          setSlideRows(results);
+        } else {
+          setSlideRows(slides[category]);
+        }
+    }, [searchTerm]);
 
     return (
         profile.displayName ? (
@@ -93,7 +106,7 @@ export function BrowseContainer({ slides }) {
                     </Card>
                 ))}
             </Card.Group>
-
+            <FooterContainer />
             </>
 
         ) :
