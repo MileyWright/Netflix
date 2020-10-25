@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-
+import { Link } from 'react-router-dom';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ export const Break = styled.div`
   height: 0;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   display: flex;
   align-items: center;
   height: 100%;
@@ -42,6 +42,7 @@ export const Button = styled.button`
   background: #e50914;
   color: white;
   text-transform: uppercase;
+  text-decoration: none;
   padding: 0 30px;
   font-size: 26px;
   border: 0;
